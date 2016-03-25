@@ -2,12 +2,13 @@ package pingo
 
 import (
 	"testing"
+	"time"
 
 	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestResolve(t *testing.T) {
-	Convey("Call resolve with", t, func() {
+	Convey("Calling resolve with", t, func() {
 
 		Convey("a valid IPv4 address,", func() {
 			target := "127.0.0.1"
@@ -63,5 +64,49 @@ func TestResolve(t *testing.T) {
 			So(err, ShouldNotBeNil)
 		})
 	})
+}
 
+func TestSimplePing(t *testing.T) {
+	Convey("Calling Ping with", t, func() {
+
+		Convey("127.0.0.1 as target", func() {
+			t, err := SimplePing("127.0.0.1", IPv4, time.Second)
+			So(err, ShouldBeNil)
+			So(t, ShouldBeLessThanOrEqualTo, time.Second)
+		})
+
+		Convey("::1 as target", func() {
+			t, err := SimplePing("::1", IPv6, time.Second)
+			So(err, ShouldBeNil)
+			So(t, ShouldBeLessThanOrEqualTo, time.Second)
+		})
+
+		Convey("8.8.8.8 as target", func() {
+			t, err := SimplePing("8.8.8.8", IPv4, time.Second)
+			So(err, ShouldBeNil)
+			So(t, ShouldBeLessThanOrEqualTo, time.Second)
+			So(t, ShouldBeGreaterThan, 0)
+		})
+
+		Convey("hostname and any IP as target", func() {
+			t, err := SimplePing("www.debian.org", IP, time.Second)
+			So(err, ShouldBeNil)
+			So(t, ShouldBeLessThanOrEqualTo, time.Second)
+			So(t, ShouldBeGreaterThan, 0)
+		})
+
+		Convey("hostname and IPv4 as target", func() {
+			t, err := SimplePing("www.debian.org", IPv4, time.Second)
+			So(err, ShouldBeNil)
+			So(t, ShouldBeLessThanOrEqualTo, time.Second)
+			So(t, ShouldBeGreaterThan, 0)
+		})
+
+		Convey("hostname and IPv6 as target", func() {
+			t, err := SimplePing("www.debian.org", IPv6, time.Second)
+			So(err, ShouldBeNil)
+			So(t, ShouldBeLessThanOrEqualTo, time.Second)
+			So(t, ShouldBeGreaterThan, 0)
+		})
+	})
 }
