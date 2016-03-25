@@ -2,7 +2,7 @@
 
 pingo a a Go package to do ICMP pings (send ICMP echo and wait for a reply). You can do it with IPv4 and IPv6.
 
-To use pingo you need root privileges.
+**WARNING : to use pingo you need root privileges.**
 
 # Install
 
@@ -51,6 +51,8 @@ The pingo package depends on external packages ( [golang.org/x/net...](https://g
 go get
 go get github.com/smartystreets/goconvey
 ```
+
+The tests are naives. Testing some cases need disabling network card, changing routes, ... It's really hard to automate but easy to do manually if needed.
 
 # Licence
 
