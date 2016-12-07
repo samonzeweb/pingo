@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	"bitbucket.org/samonzeweb/pingo"
+	"github.com/samonzeweb/pingo"
 )
 
 func main() {

@@ -7,7 +7,7 @@ pingo a a Go package to do ICMP pings (send ICMP echo and wait for a reply). You
 # Install
 
 ```
-go get bitbucket.org/samonzeweb/pingo
+go get github.com/samonzeweb/pingo
 ```
 
 # Example
@@ -20,7 +20,7 @@ import (
 	"os"
 	"time"
 
-	"bitbucket.org/samonzeweb/pingo"
+	"github.com/samonzeweb/pingo"
 )
 
 func main() {
@@ -45,11 +45,10 @@ func main() {
 
 # Development
 
-The pingo package depends on external packages ( [golang.org/x/net...](https://godoc.org/golang.org/x/net) ) you have to install yourself if you cloned the git repository or if you need to run tests :
+The pingo package depends on [GoConvey](https://github.com/smartystreets/goconvey). Simply install all the necessary things with :
 
 ```
-go get
-go get github.com/smartystreets/goconvey
+go get -t
 ```
 
 The tests are naives. Testing some cases need disabling network card, changing routes, ... It's really hard to automate but easy to do manually if needed.
