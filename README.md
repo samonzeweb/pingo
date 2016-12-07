@@ -1,5 +1,7 @@
 # pingo
 
+[![Build Status](https://travis-ci.org/samonzeweb/pingo.svg?branch=master)](https://travis-ci.org/samonzeweb/pingo)
+
 pingo a a Go package to do ICMP pings (send ICMP echo and wait for a reply). You can do it with IPv4 and IPv6.
 
 **WARNING : to use pingo you need root privileges.**
@@ -52,6 +54,10 @@ go get -t
 ```
 
 The tests are naives. Testing some cases need disabling network card, changing routes, ... It's really hard to automate but easy to do manually if needed.
+
+# Continuous Integration
+
+WARNING : Travis CI does not support IPv6. Only IPv4 tests are run on Travis CI.
 
 # Licence
 

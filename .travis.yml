@@ -1,0 +1,11 @@
+language: go
+sudo: required
+
+go:
+  - 1.7.x
+  - master
+
+env:
+  - IPV6_UNAVAILABLE=true
+
+script: sudo -E `which go` test -v .
